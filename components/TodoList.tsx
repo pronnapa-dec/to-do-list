@@ -18,7 +18,9 @@ const TodoList: React.FC = () => {
   });
 
   const handleAddTodo = (text: string) => {
+    if(text)
     dispatch(addTodo(text));
+    (document.getElementById('outlined-basic') as HTMLInputElement).value = ''
   };
 
   const handleToggleComplete = (id: number) => {
@@ -33,10 +35,10 @@ const TodoList: React.FC = () => {
     <div>
       <TextField
         label="Add Todo"
+        id="outlined-basic"
         onKeyPress={(e) => {
           if (e.key === 'Enter') {
             handleAddTodo((e.target as HTMLInputElement).value);
-            (e.target as HTMLInputElement).value = '';
           }
         }}
       />
